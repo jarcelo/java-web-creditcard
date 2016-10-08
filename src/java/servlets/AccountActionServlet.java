@@ -47,6 +47,11 @@ public class AccountActionServlet extends HttpServlet
                         errorMessage += creditCard.getActionMsg() + "<br>";
                     }
                 }
+                
+                if (action.equalsIgnoreCase("history")) {
+                    URL = "/History.jsp";
+                }
+                
                 request.getSession().setAttribute("card", creditCard);
                
                 Cookie accountCookie = new Cookie("acct", String.valueOf(creditCard.getAccountId()));

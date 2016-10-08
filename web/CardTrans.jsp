@@ -21,7 +21,7 @@
             <tr>
             <td>Account ID:</td>
             <td><input type="text" name="account" id="account" 
-                       value="${card.accountId}"/></td>
+                       value="${empty card.accountId ? cookie.acct.value : card.accountId}"/></td>
             <td><input type="submit" value="New Account" onclick="pageAction('new')"></td>
             <td><input type="submit" value="Existing" onclick="pageAction('existing')"></td>
             </table>
