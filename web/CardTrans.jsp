@@ -20,7 +20,8 @@
             <table border="0">
             <tr>
             <td>Account ID:</td>
-            <td><input type="text" name="account" id="account"/></td>
+            <td><input type="text" name="account" id="account" 
+                       value="${card.accountId}"/></td>
             <td><input type="submit" value="New Account" onclick="pageAction('new')"></td>
             <td><input type="submit" value="Existing" onclick="pageAction('existing')"></td>
             </table>
@@ -64,20 +65,37 @@
                 <tr>
                     <td>Credit Limit:</td>
                     <td><input type="text" name="climit" id="climit" readonly
-                               value=""/></td>
+                               value="${card.creditLimit}"/></td>
                 </tr>
                 <tr>
-                    <td>Credit Balance Due:</td>
+                    <!--align right-->
+                    <td>Balance Due:</td>
                     <td><input type="text" name="cbal" id="cbal" readonly
-                               value=""/></td>
+                               value="${card.outstandingBal}"/></td>
                 </tr>
                 <tr>
-                    <td>Credit Available Credit:</td>
+                    <td>Available Credit:</td>
                     <td><input type="text" name="availablecr" id="availablecr" readonly
-                               value=""/></td>
+                               value="${card.availableCr}"/></td>
                 </tr>
             </table>
             <input type="hidden" name="actiontype" id="actiontype" value="">
         </form>
+        <div>
+            <p>${errorMessage}</p>
+        </div>
+        <div>
+            <%
+                Cookie[] cookies = request.getCookies();
+                if (cookies != null) {
+                    for(Cookie c : cookies) {
+                    
+            %>
+            <%= c.getName() %> = <%= c.getValue() %> <br>
+            <%
+                    }
+                }
+            %>
+        </div>
     </body>
 </html>

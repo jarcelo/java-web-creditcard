@@ -1,4 +1,4 @@
-//package business;
+package business;
 
 import java.util.*;
 import java.io.*;
@@ -188,17 +188,28 @@ public class CreditCard {
         return acctno;
     }
 
-    public double getOutstandingBal() {
-        return cbal;
+//    public double getOutstandingBal() {
+//        return cbal;
+//    }
+    public String getOutstandingBal() {
+        return f.format(cbal);
     }
 
-    public double getCreditLimit() {
-        return climit;
+//    public double getCreditLimit() {
+//        return climit;
+//    }
+    public String getCreditLimit() {
+        return f.format(climit);
     }
+    
 
-    public double getAvailableCr() {
-        return climit - cbal;
+//    public double getAvailableCr() {
+//        return climit - cbal;
+//    }
+    public String getAvailableCr() {
+        return f.format(climit - cbal);
     }
+    
     public boolean getErrorStatus() {
         boolean eresult = false;
         if (!cerrmsg.isEmpty()) {

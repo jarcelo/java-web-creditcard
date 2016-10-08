@@ -1,9 +1,12 @@
 
 package servlets;
 
+import business.CreditCard;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +23,46 @@ public class AccountActionServlet extends HttpServlet
     {
         response.setContentType("text/html;charset=UTF-8");
 
+        CreditCard creditCard;
+        String URL = "/CardTrans.jsp";
+        String errorMessage = "";
+        String path = getServletContext().getRealPath("/WEB-INF/") + "\\";
         
+        try {
+            String action = request.getParameter("actiontype");
+            creditCard = (CreditCard) request.getSession().getAttribute("card");
+            
+            if (creditCard == null
+                    && !action.equalsIgnoreCase("new")
+                    && !action.equalsIgnoreCase("existing")) {
+                errorMessage += "No active account. Please create or open.<br>";
+            }
+            else {
+                if (action.equalsIgnoreCase("new")) {
+                    creditCard = new CreditCard(path);
+                    if (creditCard.getErrorStatus()) {
+                        errorMessage += "New account error: " + creditCard.getErrorMessage() + "<br>";
+                    }
+                    else {
+                        errorMessage += creditCard.getActionMsg() + "<br>";
+                    }
+                }
+                request.getSession().setAttribute("card", creditCard);
+               
+                Cookie accountCookie = new Cookie("acct", String.valueOf(creditCard.getAccountId()));
+                accountCookie.setMaxAge(60*2);
+                accountCookie.setPath("/");
+                
+                response.addCookie(accountCookie);
+            }
+        } catch (Exception e) {
+            errorMessage += "Application error. " + e.getMessage();
+        }
+        
+        request.setAttribute("errorMessage", errorMessage);
+        
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(URL);
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
