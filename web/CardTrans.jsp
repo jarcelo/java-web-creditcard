@@ -4,11 +4,16 @@
 <script src="ajax.js" type="text/javascript"></script>
 <script src="history.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
-        function pageAction(action)
-        {
-            document.card.actiontype.value=action;
+    function pageAction(action)
+    {
+        document.card.actiontype.value=action;
+        if (ajax && action === 'history') {
+            ajax.open('get','AccountAction?actiontype=history');
+            ajax.send(null);
+        } else {
             document.card.submit();
         }
+    }
     </script>
 <html>
 
