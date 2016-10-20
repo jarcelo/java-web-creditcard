@@ -16,6 +16,12 @@
         <h1>Credit card log for account: </h1>
         ${card.accoundId}
         <br>
-        
+        <table>
+            <c:forEach var="s" items="${card.history}">
+                <tr>
+                    <td>${s}</td>
+                </tr>
+            </c:forEach>
+        </table>
     </body>
 </html>
