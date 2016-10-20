@@ -12,6 +12,9 @@
         <title>Account History</title>
     </head>
     <body>
-        <h1>Log for account is: </h1>
+        <h1>Credit card log for account: </h1>
+        ${card.accoundId}
+        <br>
+        
     </body>
 </html>
