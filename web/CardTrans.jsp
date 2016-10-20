@@ -83,6 +83,10 @@
             </table>
             <input type="hidden" name="actiontype" id="actiontype" value="">
         </form>
+        <br>
+        
+        <div id="results"></div>
+        
         <div>
             <p>${errorMessage}</p>
         </div>
