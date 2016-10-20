@@ -48,8 +48,24 @@ public class AccountActionServlet extends HttpServlet
                     }
                 }
                 
+                if (action.equalsIgnoreCase("existing")) {
+                    try {
+                        int account = Integer.parseInt(request.getParameter("account"));
+                        creditCard = new CreditCard(account, path);
+                        
+                        if (creditCard.getErrorStatus()) {
+                            errorMessage += creditCard.getErrorMessage() + "<br>";
+                        } else {
+                            errorMessage += creditCard.getActionMsg() + "<br>";
+                        }
+                    } catch (Exception e) {
+                        errorMessage += "Illegar or missing account number. <br>";
+                    }
+                }
+                
                 if (action.equalsIgnoreCase("history")) {
                     URL = "/History.jsp";
+                    errorMessage = "History Request.";
                 }
                 
                 request.getSession().setAttribute("card", creditCard);
