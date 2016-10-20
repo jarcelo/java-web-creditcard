@@ -1,6 +1,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<script src="ajax.js" type="text/javascript"></script>
+<script src="history.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
         function pageAction(action)
         {
