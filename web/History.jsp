@@ -13,8 +13,7 @@
         <title>Account History</title>
     </head>
     <body>
-        <h1>Credit card log for account: </h1>
-        ${card.accountId}
+        <h1>Credit card log for account: ${card.accountId}</h1>
         <br>
         <table>
             <c:forEach var="s" items="${card.creditHistory}">
