@@ -38,7 +38,7 @@ public class CreditCard {
             }
         }
         if (acctno == 0) {
-            cerrmsg = cerrmsg + "Unable to genterate account number.";
+            cerrmsg = cerrmsg + "Unable to generate account number.";
         }
     }
 
@@ -53,6 +53,7 @@ public class CreditCard {
             climit = Double.parseDouble(in.readLine());
             cbal = Double.parseDouble(in.readLine());
             in.close();
+            cmsg = "Account " + acctno + " reopened.";
         } catch (NumberFormatException e) {
             cerrmsg = "Account " + acctno + ": CC File data format not correct.  " +e;
         } catch (FileNotFoundException e) {
