@@ -139,11 +139,12 @@ public class CreditCard {
     public ArrayList<String> getCreditHistory() {
         cerrmsg = "";
         cmsg = "";
-        ArrayList<String> h = new ArrayList<String>();
+        ArrayList<String> h = new ArrayList<>();
         String s;
 
         try {
-            BufferedReader in = new BufferedReader(new FileReader(this.path + "CCL" + acctno + ".txt"));
+            BufferedReader in = new BufferedReader(new FileReader(
+                    this.path + "CCL" + acctno + ".txt"));
             s = in.readLine();
             while (s != null) {
                 h.add(s);
