@@ -14,10 +14,10 @@
     </head>
     <body>
         <h1>Credit card log for account: </h1>
-        ${card.accoundId}
+        ${card.accountId}
         <br>
         <table>
-            <c:forEach var="s" items="${card.history}">
+            <c:forEach var="s" items="${card.creditHistory}">
                 <tr>
                     <td>${s}</td>
                 </tr>
