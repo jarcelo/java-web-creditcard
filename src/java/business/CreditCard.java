@@ -78,9 +78,10 @@ public class CreditCard {
         } else {
             cbal += a;
             cerrmsg = writeStatus();
-            if (cerrmsg.isEmpty())
+            if (cerrmsg.isEmpty()) //{
                cmsg = "Credit Card Charge: " + f.format(a) + " for " + d;
                cerrmsg = writeLog(cmsg);
+            //}
         }
     }
 
@@ -219,9 +220,11 @@ public class CreditCard {
         }
         return eresult;
     }
+    
     public String getErrorMessage() {
         return cerrmsg;
     }
+    
     public String getActionMsg() {
         return cmsg;
     }
