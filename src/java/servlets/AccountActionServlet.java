@@ -82,6 +82,15 @@ public class AccountActionServlet extends HttpServlet
                     }
                 }
                 
+                if (action.equalsIgnoreCase("increase")) {
+                    try {
+                        double amount = Double.parseDouble(request.getParameter("cIncrease"));
+                        creditCard.setCreditIncrease(amount);
+                    } catch (Exception e) {
+                        errorMessage += "Please enter a valid amount.";
+                    }
+                }
+                
                 if (action.equalsIgnoreCase("history")) {
                     URL = "/History.jsp";
                     errorMessage = "History Request.";
