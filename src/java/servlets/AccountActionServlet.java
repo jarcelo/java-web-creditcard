@@ -59,7 +59,7 @@ public class AccountActionServlet extends HttpServlet
                             errorMessage += creditCard.getActionMsg() + "<br>";
                         }
                     } catch (Exception e) {
-                        errorMessage += "Illegar or missing account number. <br>";
+                        errorMessage += "Illegal or missing account number. <br>";
                     }
                 }
                 
@@ -70,6 +70,15 @@ public class AccountActionServlet extends HttpServlet
                         creditCard.setCharge(charge, description);
                     } catch (Exception e) {
                         errorMessage += "Please enter a valid amount.";
+                    }
+                }
+                
+                if (action.equalsIgnoreCase("payment")) {
+                    try {
+                        double amount = Double.parseDouble(request.getParameter("pAmt"));
+                        creditCard.setPayment(amount);
+                    } catch (Exception e) {
+                        errorMessage += "Please enter a valid amount";
                     }
                 }
                 
