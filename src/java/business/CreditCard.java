@@ -1,5 +1,6 @@
 package business;
 
+import com.sun.prism.shader.FillRoundRect_RadialGradient_REPEAT_Loader;
 import java.util.*;
 import java.io.*;
 import java.text.DateFormat;
@@ -113,13 +114,13 @@ public class CreditCard {
             if (((int) (Math.random() * 10)) % 2 == 0) {   //random approvals
                 r = r - (r % 100);  //increase are only granted in $100 increments.
                 climit += r;
-                cmsg = ("Credit Limit increased to " + f.format(climit) + ".");
+                cmsg = ("Credit limit increased to " + f.format(climit) + ".");
                 cerrmsg = writeStatus();
                 if (cerrmsg.isEmpty()) {
                     cerrmsg = writeLog(cmsg);
                 }
              } else {
-                cmsg = "Credit Increse of " + r + " declined.";
+                cmsg = "Credit increase of " + f.format(r) + " declined.";
                 cerrmsg = writeLog(cmsg);
             }
         }
