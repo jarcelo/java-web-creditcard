@@ -91,7 +91,7 @@ public class CreditCard {
         cmsg = "";
 
         if (payment < 0) {
-            cmsg = "Credit Card payment of: " + payment + " declined: must be positive value.";
+            cmsg = "Credit card payment of " + f.format(payment) + " declined: must be positive value.";
             cerrmsg = writeLog(cmsg);
         } else {
             cbal -= payment;
