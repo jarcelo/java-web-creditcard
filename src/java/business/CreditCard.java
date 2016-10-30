@@ -69,20 +69,20 @@ public class CreditCard {
         }
     }
 
-    public void setCharge(double a, String d) {
+    public void setCharge(double amount, String description) {
         cerrmsg = "";
         cmsg = "";
 
-        if (a > climit - cbal) {
-            cmsg = "Credit card charge: " + f.format(a) + " for " + d + " declined - over limit";
+        if (amount > climit - cbal) {
+            cmsg = "Credit card charge: " + f.format(amount) + " for " + description + " declined - over limit";
             cerrmsg = writeLog(cmsg);
         } else {
-            cbal += a;
+            cbal += amount;
             cerrmsg = writeStatus();
-            if (cerrmsg.isEmpty()) //{
-               cmsg = "Credit Card Charge: " + f.format(a) + " for " + d;
+            if (cerrmsg.isEmpty()) {
+               cmsg = "Credit card charge: " + f.format(amount) + " for " + description;
                cerrmsg = writeLog(cmsg);
-            //}
+            }
         }
     }
 
