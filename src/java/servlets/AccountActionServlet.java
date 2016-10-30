@@ -66,28 +66,54 @@ public class AccountActionServlet extends HttpServlet
                 if (action.equalsIgnoreCase("charge")) {
                     try {
                         double charge = Double.parseDouble(request.getParameter("cAmt"));
+                        double creditAmount = creditCard.getAvailableCreditAmount();
+                        if (charge > creditAmount) {
+                            errorMessage += "Amount entered exceeds the available credit amount of " +
+                                    creditAmount + ". Please enter a valid amount.";
+                        }
                         String description = request.getParameter("cDesc");
                         creditCard.setCharge(charge, description);
                     } catch (Exception e) {
-                        errorMessage += "Please enter a valid amount.";
+                        errorMessage += "Please enter a valid charge amount.";
                     }
                 }
                 
                 if (action.equalsIgnoreCase("payment")) {
                     try {
                         double amount = Double.parseDouble(request.getParameter("pAmt"));
+                        if (amount < 0) {
+                            errorMessage += "Payment input error. Amount must be a positive value.";
+                        }
                         creditCard.setPayment(amount);
                     } catch (Exception e) {
-                        errorMessage += "Please enter a valid amount";
+                        errorMessage += "Please enter a valid payment amount";
                     }
                 }
                 
                 if (action.equalsIgnoreCase("increase")) {
+                    // Needs to create a client side validation
                     try {
                         double amount = Double.parseDouble(request.getParameter("cIncrease"));
-                        creditCard.setCreditIncrease(amount);
+                        if (amount < 0) {
+                            errorMessage += "Credit increase cannot be negative. Minimum increase is $100";
+                        }
+                        else if (amount < 100) {
+                            errorMessage += "Credit increase of $" + amount + " declined. Minimum increase is $100.";
+                        }
+                        else {
+                            creditCard.setCreditIncrease(amount);
+                        }
                     } catch (Exception e) {
-                        errorMessage += "Please enter a valid amount.";
+                        errorMessage += "Input error. Please enter a valid amount.";
+                    }
+                }
+                
+                if (action.equalsIgnoreCase("interest")) {
+                    try {
+                        double amount = Double.parseDouble(request.getParameter("iRate"));
+                        creditCard.setInterestCharge(amount);
+                    } catch (Exception e) {
+                        errorMessage += "Please enter a valid value.";
                     }
                 }
                 
