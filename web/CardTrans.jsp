@@ -34,8 +34,8 @@
                          <input class="form-control" type="text" name="account" id="account" 
                        value="${empty card.accountId ? cookie.acct.value : card.accountId}"/>
                     </div>
-                    <input class="btn btn-default" type="submit" value="New Account" onclick="pageAction('new')">
-                    <input class="btn btn-default" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;Existing&nbsp;&nbsp;&nbsp;&nbsp;" onclick="pageAction('existing')">
+                    <input class="btn btn-success" type="submit" value="New Account" onclick="pageAction('new')">
+                    <input class="btn btn-info" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;Existing&nbsp;&nbsp;&nbsp;&nbsp;" onclick="pageAction('existing')">
                 </div>
                     
                 <div class="form-group">
@@ -51,7 +51,7 @@
                     <div class="col-sm-3">
                         <input class="form-control" type="text" name="cDesc" id="cDesc" size="40">
                     </div>
-                    <input class="btn btn-default" type="button" name="charge" id="charge" value="Post Charge" onclick="pageAction('charge')">
+                    <input class="btn btn-success" type="button" name="charge" id="charge" value="Post Charge" onclick="pageAction('charge')">
                 </div>
                 
                 <div class="form-group">
@@ -63,7 +63,7 @@
                             <div class="input-group-addon">.00</div>
                         </div>
                     </div>
-                    <input class="btn btn-default" type="button" name="payment" id="payment" value="Post Payment" onclick="pageAction('payment')">
+                    <input class="btn btn-success" type="button" name="payment" id="payment" value="Post Payment" onclick="pageAction('payment')">
                 </div>
                     
                 <div class="form-group">
@@ -75,7 +75,7 @@
                             <div class="input-group-addon">.00</div>                            
                         </div>
                     </div>
-                    <input class="btn btn-default" type="button" name="Increase" id="Increase" value="Credit Increase" onclick="pageAction('increase')">
+                    <input class="btn btn-success" type="button" name="Increase" id="Increase" value="Credit Increase" onclick="pageAction('increase')">
                 </div>
                     
                 <div class="form-group">
@@ -83,7 +83,7 @@
                     <div class="col-sm-3">
                         <input class="form-control" type="text" name="iRate" id="iRate">
                     </div>
-                    <input class="btn btn-default" type="button" name="interest" id="interest" value="Interest Charge" onclick="pageAction('interest')">
+                    <input class="btn btn-success" type="button" name="interest" id="interest" value="Interest Charge" onclick="pageAction('interest')">
                 </div>
                 
                 <hr>
@@ -94,26 +94,25 @@
                     
                 <br>
                 <hr><br>
-                <table border="1">
+                <table class="table-condensed">
                     <tr>
-                        <td>Bank Balance:</td>
-                        <td><input type="text" name="bbal" id="bbal" readonly
+                        <td><strong>Bank Balance</strong></td>
+                        <td><input class="text-right" type="text" name="bbal" id="bbal" readonly
                                    value=""/></td>
                     </tr>
                     <tr>
-                        <td>Credit Limit:</td>
-                        <td><input type="text" name="climit" id="climit" readonly
+                        <td><strong>Credit Limit</strong></td>
+                        <td><input class="text-right" type="text" name="climit" id="climit" readonly
                                    value="${card.creditLimit}"/></td>
                     </tr>
                     <tr>
-                        <!--align right-->
-                        <td>Balance Due:</td>
-                        <td><input type="text" name="cbal" id="cbal" readonly
+                        <td><strong>Balance Due</strong></td>
+                        <td><input class="text-right" type="text" name="cbal" id="cbal" readonly
                                    value="${card.outstandingBal}"/></td>
                     </tr>
                     <tr>
-                        <td>Available Credit:</td>
-                        <td><input type="text" name="availablecr" id="availablecr" readonly
+                        <td><strong>Available Credit</strong></td>
+                        <td><input class="text-right" type="text" name="availablecr" id="availablecr" readonly
                                    value="${card.availableCr}"/></td>
                     </tr>
                 </table>
