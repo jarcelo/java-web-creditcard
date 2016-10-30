@@ -21,6 +21,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
             integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <title>Credit Card</title>
+        <style>
+            #summary {
+                padding: 30px 0;
+                border-radius: 5px;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -38,7 +44,7 @@
                        value="${empty card.accountId ? cookie.acct.value : card.accountId}"/>
                     </div>
                     <input class="btn btn-success" type="submit" value="New Account" onclick="pageAction('new')">
-                    <input class="btn btn-info" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;Existing&nbsp;&nbsp;&nbsp;&nbsp;" onclick="pageAction('existing')">
+                    <input class="btn btn-info" type="submit" value="Open Existing" onclick="pageAction('existing')">
                 </div>
                     
                 <div class="form-group">
@@ -90,42 +96,48 @@
                 </div>
                 
                 <hr>
-
-                <div class="form-group">
-                       <input class="btn btn-primary" type="button" name="history" id="history" value="Display History" onclick="pageAction('history')">
+                <div id="summary" class="row bg-primary">
+                    <div class="col-sm-6">
+                        <table class="table-condensed">
+                            <!--
+                            <tr>
+                                <td><strong>Bank Balance</strong></td>
+                                <td><input class="text-right" type="text" name="bbal" id="bbal" readonly
+                                           value=""/></td>
+                            </tr>
+                            -->
+                            <tr>
+                                <td><strong>Credit Limit</strong></td>
+                                <td><input class="text-right form-control" type="text" name="climit" id="climit" readonly
+                                           value="${card.creditLimit}"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Balance Due</strong></td>
+                                <td><input class="text-right form-control" type="text" name="cbal" id="cbal" readonly
+                                           value="${card.outstandingBal}"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Available Credit</strong></td>
+                                <td><input class="text-right form-control" type="text" name="availablecr" id="availablecr" readonly
+                                           value="${card.availableCr}"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-sm-6 col-sm-push-1">
+                        <div class="form-group">
+                            <br>
+                            <br>
+                            <input class="btn btn-default btn-lg" type="button" name="history" id="history" value="Display History" onclick="pageAction('history')">
+                        </div>
+                    </div>
                 </div>
-                    
                 <br>
-                <hr><br>
-                <table class="table-condensed">
-                    <tr>
-                        <td><strong>Bank Balance</strong></td>
-                        <td><input class="text-right" type="text" name="bbal" id="bbal" readonly
-                                   value=""/></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Credit Limit</strong></td>
-                        <td><input class="text-right" type="text" name="climit" id="climit" readonly
-                                   value="${card.creditLimit}"/></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Balance Due</strong></td>
-                        <td><input class="text-right" type="text" name="cbal" id="cbal" readonly
-                                   value="${card.outstandingBal}"/></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Available Credit</strong></td>
-                        <td><input class="text-right" type="text" name="availablecr" id="availablecr" readonly
-                                   value="${card.availableCr}"/></td>
-                    </tr>
-                </table>
+                <hr>
                 <input type="hidden" name="actiontype" id="actiontype" value="">
             </form>
-            <br>
-
             <div id="results"></div>
 
-            <div>
+            <div class="hidden">
                 <%
                     Cookie[] cookies = request.getCookies();
                     if (cookies != null) {
