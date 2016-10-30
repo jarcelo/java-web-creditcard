@@ -74,7 +74,7 @@ public class CreditCard {
         cmsg = "";
 
         if (a > climit - cbal) {
-            cmsg = "Credit Card Charge: " + f.format(a) + " for " + d + " declined - over limit";
+            cmsg = "Credit card charge: " + f.format(a) + " for " + d + " declined - over limit";
             cerrmsg = writeLog(cmsg);
         } else {
             cbal += a;
