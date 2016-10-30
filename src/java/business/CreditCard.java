@@ -74,13 +74,13 @@ public class CreditCard {
         cmsg = "";
 
         if (amount > climit - cbal) {
-            cmsg = "Credit card charge: " + f.format(amount) + " for " + description + " declined - over limit";
+            cmsg = "Credit card charge " + f.format(amount) + " for " + description + " declined - over limit";
             cerrmsg = writeLog(cmsg);
         } else {
             cbal += amount;
             cerrmsg = writeStatus();
             if (cerrmsg.isEmpty()) {
-               cmsg = "Credit card charge: " + f.format(amount) + " for " + description;
+               cmsg = "Credit card charge " + f.format(amount) + " for " + description + ".";
                cerrmsg = writeLog(cmsg);
             }
         }
@@ -192,24 +192,14 @@ public class CreditCard {
         return acctno;
     }
 
-//    public double getOutstandingBal() {
-//        return cbal;
-//    }
     public String getOutstandingBal() {
         return f.format(cbal);
     }
 
-//    public double getCreditLimit() {
-//        return climit;
-//    }
     public String getCreditLimit() {
         return f.format(climit);
     }
     
-
-//    public double getAvailableCr() {
-//        return climit - cbal;
-//    }
     public String getAvailableCr() {
         return f.format(climit - cbal);
     }
