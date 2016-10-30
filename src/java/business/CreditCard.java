@@ -204,6 +204,10 @@ public class CreditCard {
         return f.format(climit - cbal);
     }
     
+    public double getAvailableCreditAmount() {
+        return climit - cbal;
+    }
+    
     public boolean getErrorStatus() {
         boolean eresult = false;
         if (!cerrmsg.isEmpty()) {
