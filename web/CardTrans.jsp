@@ -134,7 +134,7 @@
                 <br>
                 <hr>
                 <input type="hidden" name="actiontype" id="actiontype" value="">
-            </form>
+            </form>                
             <div id="results"></div>
 
             <div class="hidden">
