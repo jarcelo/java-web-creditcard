@@ -49,16 +49,16 @@
                     <input type="button" name="payment" id="payment" value="Post Payment" onclick="pageAction('payment')">
                 </div>
                     
+                <div class="form-group">
+                    <label>Credit Increase</label>
+                    <input type="text" name="cIncrease" id="cIncrease" size="15">
+                    <input type="button" name="Increase" id="Increase" value="Credit Increase" onclick="pageAction('increase')">
+                </div>
+                    
                     
                 
 
                 <table>
-                    <tr>
-                        <td>Credit Increase:</td>
-                        <td><input type="text" name="cIncrease" id="cIncrease" size="15"></td>
-                        <td></td>
-                        <td><input type="button" name="Increase" id="Increase" value="Credit Increase" onclick="pageAction('increase')"</td>
-                    </tr>
                     <tr>
                         <td>Interest Rate:</td>
                         <td><input type="text" name="iRate" id="iRate" size="15"></td>
