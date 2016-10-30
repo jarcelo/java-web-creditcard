@@ -24,49 +24,74 @@
     </head>
     <body>
         <div class="container">
-            <h1 class="text-danger">Credit Card Simulator</h1>
+            <h1 class="text-danger text-center">Credit Card Simulator</h1>
             <hr>
             <form class="form-horizontal" action="AccountAction" name="card" id="card" method="post">
+                
                 <div class="form-group">
-                    <label for="">Account ID</label>
-                    <input type="text" name="account" id="account" 
-                           value="${empty card.accountId ? cookie.acct.value : card.accountId}"/>
-                    <input type="submit" value="New Account" onclick="pageAction('new')">
-                    <input type="submit" value="Existing" onclick="pageAction('existing')">
+                    <label class="col-sm-2 control-label" for="">Account ID</label>
+                    <div class="col-sm-3">
+                         <input class="form-control" type="text" name="account" id="account" 
+                       value="${empty card.accountId ? cookie.acct.value : card.accountId}"/>
+                    </div>
+                    <input class="btn btn-default" type="submit" value="New Account" onclick="pageAction('new')">
+                    <input class="btn btn-default" type="submit" value="&nbsp;&nbsp;&nbsp;&nbsp;Existing&nbsp;&nbsp;&nbsp;&nbsp;" onclick="pageAction('existing')">
                 </div>
                     
                 <div class="form-group">
-                    <label for="cAmt">Charge Amount</label>
-                    <input type="text" name="cAmt" id="cAmt">
-                    <label for="cDesc">Description</label>
-                    <input type="text" name="cDesc" id="cDesc" size="40">
-                    <input type="button" name="charge" id="charge" value="Post Charge" onclick="pageAction('charge')">
+                    <label class="col-sm-2 control-label" for="cAmt">Charge Amount</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input class="form-control" type="text" name="cAmt" id="cAmt">
+                            <div class="input-group-addon">.00</div>
+                        </div>
+                    </div>
+                    <label class="col-sm-1 control-label" for="cDesc">Description</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="cDesc" id="cDesc" size="40">
+                    </div>
+                    <input class="btn btn-default" type="button" name="charge" id="charge" value="Post Charge" onclick="pageAction('charge')">
                 </div>
                 
                 <div class="form-group">
-                    <label for="">Payment Amount</label>
-                    <input type="text" name="pAmt" id="pAmt" size="15">
-                    <input type="button" name="payment" id="payment" value="Post Payment" onclick="pageAction('payment')">
+                    <label class="col-sm-2 control-label" for="">Payment Amount</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input class="form-control" type="text" name="pAmt" id="pAmt">
+                            <div class="input-group-addon">.00</div>
+                        </div>
+                    </div>
+                    <input class="btn btn-default" type="button" name="payment" id="payment" value="Post Payment" onclick="pageAction('payment')">
                 </div>
                     
                 <div class="form-group">
-                    <label>Credit Increase</label>
-                    <input type="text" name="cIncrease" id="cIncrease" size="15">
-                    <input type="button" name="Increase" id="Increase" value="Credit Increase" onclick="pageAction('increase')">
+                    <label class="col-sm-2 control-label" for="">Credit Increase</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>                           
+                            <input class="form-control" type="text" name="cIncrease" id="cIncrease" size="15">
+                            <div class="input-group-addon">.00</div>                            
+                        </div>
+                    </div>
+                    <input class="btn btn-default" type="button" name="Increase" id="Increase" value="Credit Increase" onclick="pageAction('increase')">
                 </div>
                     
-                    
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Interest Rate</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" name="iRate" id="iRate">
+                    </div>
+                    <input class="btn btn-default" type="button" name="interest" id="interest" value="Interest Charge" onclick="pageAction('interest')">
+                </div>
                 
+                <hr>
 
-                <table>
-                    <tr>
-                        <td>Interest Rate:</td>
-                        <td><input type="text" name="iRate" id="iRate" size="15"></td>
-                        <td></td>
-                        <td><input type="button" name="interest" id="interest" value="Interest Charge" onclick="pageAction('interest')"</td>
-                        <td><input type="button" name="history" id="history" value="Display History" onclick="pageAction('history')">
-                    </tr>
-                </table><br>
+                <div class="form-group">
+                       <input class="btn btn-primary" type="button" name="history" id="history" value="Display History" onclick="pageAction('history')">
+                </div>
+                    
                 <br>
                 <hr><br>
                 <table border="1">
