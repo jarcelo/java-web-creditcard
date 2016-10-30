@@ -13,14 +13,11 @@
         <title>Account History</title>
     </head>
     <body>
-        <h1>Credit card log for account: ${card.accountId}</h1>
-        <br>
-        <table>
-            <c:forEach var="s" items="${card.creditHistory}">
-                <tr>
-                    <td>${s}</td>
-                </tr>
-            </c:forEach>
-        </table>
+        <h3>Credit card log for account: ${card.accountId}</h2>
+            <ul class="list-group">
+                <c:forEach var="s" items="${card.creditHistory}">
+                        <li class="list-group-item">${s}</li>
+                </c:forEach>
+            </ul>
     </body>
 </html>
