@@ -24,8 +24,11 @@
     </head>
     <body>
         <div class="container">
-            <h1 class="text-danger text-center">Credit Card Simulator</h1>
+            <h1 class="text-center">Credit Card Simulator</h1>
             <hr>
+            <div class="text-danger">
+                <p>${errorMessage}</p>
+            </div>
             <form class="form-horizontal" action="AccountAction" name="card" id="card" method="post">
                 
                 <div class="form-group">
@@ -122,9 +125,6 @@
 
             <div id="results"></div>
 
-            <div>
-                <p>${errorMessage}</p>
-            </div>
             <div>
                 <%
                     Cookie[] cookies = request.getCookies();
