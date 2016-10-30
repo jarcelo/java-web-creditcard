@@ -26,7 +26,7 @@
         <div class="container">
             <h1 class="text-danger">Credit Card Simulator</h1>
             <hr>
-            <form class="form-inline" action="AccountAction" name="card" id="card" method="post">
+            <form class="form-horizontal" action="AccountAction" name="card" id="card" method="post">
                 <div class="form-group">
                     <label for="">Account ID</label>
                     <input type="text" name="account" id="account" 
@@ -34,31 +34,25 @@
                     <input type="submit" value="New Account" onclick="pageAction('new')">
                     <input type="submit" value="Existing" onclick="pageAction('existing')">
                 </div>
+                    
+                <div class="form-group">
+                    <label for="cAmt">Charge Amount</label>
+                    <input type="text" name="cAmt" id="cAmt">
+                    <label for="cDesc">Description</label>
+                    <input type="text" name="cDesc" id="cDesc" size="40">
+                    <input type="button" name="charge" id="charge" value="Post Charge" onclick="pageAction('charge')">
+                </div>
                 
+                <div class="form-group">
+                    <label for="">Payment Amount</label>
+                    <input type="text" name="pAmt" id="pAmt" size="15">
+                    <input type="button" name="payment" id="payment" value="Post Payment" onclick="pageAction('payment')">
+                </div>
+                    
+                    
                 
-                <table border="0">
-                <tr>
-                <td>Account ID:</td>
-                <td><input type="text" name="account" id="account" 
-                           value="${empty card.accountId ? cookie.acct.value : card.accountId}"/></td>
-                <td><input type="submit" value="New Account" onclick="pageAction('new')"></td>
-                <td><input type="submit" value="Existing" onclick="pageAction('existing')"></td>
-                </table>
-                <hr/>         
+
                 <table>
-                    <tr>
-                        <td>Charge Amt:</td>
-                        <td><input type="text" name="cAmt" id="cAmt" size="15"></td>
-                        <td width="50" align="right">Desc:</td>
-                        <td><input type="text" name="cDesc" id="cDesc" size="40"></td>
-                        <td><input type="button" name="charge" id="charge" value="Post Charge" onclick="pageAction('charge')"</td>
-                    </tr>
-                    <tr>
-                        <td>Payment Amt:</td>
-                        <td><input type="text" name="pAmt" id="pAmt" size="15"></td>
-                        <td></td>
-                        <td><input type="button" name="payment" id="payment" value="Post Payment" onclick="pageAction('payment')"</td>
-                    </tr>
                     <tr>
                         <td>Credit Increase:</td>
                         <td><input type="text" name="cIncrease" id="cIncrease" size="15"></td>
