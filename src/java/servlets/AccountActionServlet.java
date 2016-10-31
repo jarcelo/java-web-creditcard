@@ -3,7 +3,7 @@ package servlets;
 
 import business.CreditCard;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.NumberFormat;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AccountActionServlet extends HttpServlet
 {
+    private NumberFormat currency = NumberFormat.getCurrencyInstance();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
@@ -26,6 +27,7 @@ public class AccountActionServlet extends HttpServlet
         CreditCard creditCard;
         String URL = "/CardTrans.jsp";
         String errorMessage = "";
+
         String path = getServletContext().getRealPath("/WEB-INF/") + "\\";
         
         try {
@@ -82,29 +84,30 @@ public class AccountActionServlet extends HttpServlet
                     try {
                         double amount = Double.parseDouble(request.getParameter("pAmt"));
                         if (amount < 0) {
-                            errorMessage += "Payment input error. Amount must be a positive value.";
+                            errorMessage += "Payment input error. Amount must be a positive value.<br>";
                         }
                         creditCard.setPayment(amount);
                     } catch (Exception e) {
-                        errorMessage += "Please enter a valid payment amount";
+                        errorMessage += "Please enter a valid payment amount. <br>";
                     }
                 }
                 
                 if (action.equalsIgnoreCase("increase")) {
-                    // Needs to create a client side validation
                     try {
                         double amount = Double.parseDouble(request.getParameter("cIncrease"));
                         if (amount < 0) {
-                            errorMessage += "Credit increase cannot be negative. Minimum increase is $100";
+                            errorMessage += "Credit increase cannot be negative. Minimum increase is $100.00 <br>";
                         }
                         else if (amount < 100) {
-                            errorMessage += "Credit increase of $" + amount + " declined. Minimum increase is $100.";
+                            errorMessage += "Credit increase of " + currency.format(amount) + " declined. "
+                                    + "Minimum increase is $100.00<br>";
                         }
-                        else {
-                            creditCard.setCreditIncrease(amount);
+                        else if (amount % 100 != 0) {
+                            errorMessage += "Credit increase needs to be in $100.00 increments. <br>";
                         }
+                        creditCard.setCreditIncrease(amount);
                     } catch (Exception e) {
-                        errorMessage += "Input error. Please enter a valid amount.";
+                        errorMessage += "Credit increase input error. Please enter a valid amount.<br>";
                     }
                 }
                 
