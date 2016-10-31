@@ -76,7 +76,7 @@ public class AccountActionServlet extends HttpServlet
                         String description = request.getParameter("cDesc");
                         creditCard.setCharge(charge, description);
                     } catch (Exception e) {
-                        errorMessage += "Please enter a valid charge amount.";
+                        errorMessage += "Charge amount input error. Please enter a valid amount.";
                     }
                 }
                 
@@ -88,7 +88,7 @@ public class AccountActionServlet extends HttpServlet
                         }
                         creditCard.setPayment(amount);
                     } catch (Exception e) {
-                        errorMessage += "Please enter a valid payment amount. <br>";
+                        errorMessage += "Payment input error. Please enter a valid amount. <br>";
                     }
                 }
                 
@@ -113,10 +113,15 @@ public class AccountActionServlet extends HttpServlet
                 
                 if (action.equalsIgnoreCase("interest")) {
                     try {
-                        double amount = Double.parseDouble(request.getParameter("iRate"));
-                        creditCard.setInterestCharge(amount);
+                        double rate = Double.parseDouble(request.getParameter("iRate"));
+                        if (rate <= 0) {
+                            errorMessage += "Interest rate error. Must be a positive value, e.g., .1, .12";
+                        }
+                        else {
+                            creditCard.setInterestCharge(rate);
+                        }
                     } catch (Exception e) {
-                        errorMessage += "Please enter a valid value.";
+                        errorMessage += "Interest rate input error. Please enter a valid interest rate.";
                     }
                 }
                 
