@@ -25,6 +25,7 @@
             #summary {
                 padding: 30px 0;
                 border-radius: 5px;
+                background-color: #9b9e99;
             }
         </style>
     </head>
@@ -43,7 +44,7 @@
                          <input class="form-control text-center" type="text" name="account" id="account" 
                        value="${empty card.accountId ? cookie.acct.value : card.accountId}"/>
                     </div>
-                    <input class="btn btn-success" type="submit" value="New Account" onclick="pageAction('new')">
+                    <input class="btn btn-success" type="submit" value="&nbsp;New Account&nbsp;" onclick="pageAction('new')">
                     <input class="btn btn-info" type="submit" value="Open Existing" onclick="pageAction('existing')">
                 </div>
                     
@@ -71,7 +72,7 @@
                             <input class="form-control" type="text" name="pAmt" id="pAmt">
                         </div>
                     </div>
-                    <input class="btn btn-success" type="button" name="payment" id="payment" value="Post Payment" 
+                    <input class="btn btn-success" type="button" name="payment" id="payment" value="&nbsp;Post Payment&nbsp;" 
                            onclick="pageAction('payment')">
                 </div>
                     
@@ -100,16 +101,9 @@
                 </div>
                 
                 <hr>
-                <div id="summary" class="row bg-primary">
-                    <div class="col-sm-6">
+                <div id="summary" class="row">
+                    <div class="col-sm-6 col-sm-push-1">
                         <table class="table-condensed">
-                            <!--
-                            <tr>
-                                <td><strong>Bank Balance</strong></td>
-                                <td><input class="text-right" type="text" name="bbal" id="bbal" readonly
-                                           value=""/></td>
-                            </tr>
-                            -->
                             <tr>
                                 <td><strong>Credit Limit</strong></td>
                                 <td><input class="text-right form-control" type="text" name="climit" id="climit" readonly
