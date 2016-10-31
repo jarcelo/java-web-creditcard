@@ -108,7 +108,7 @@ public class CreditCard {
         cmsg = "";
 
         if (r < 100) {
-            cmsg = "Credit Increase of " + r + " declined: minimum increase is $100.";
+            cmsg = "Credit Increase of " + f.format(r) + " declined: minimum increase is $100.";
             cerrmsg = writeLog(cmsg);
         } else {
             if (((int) (Math.random() * 10)) % 2 == 0) {   //random approvals
