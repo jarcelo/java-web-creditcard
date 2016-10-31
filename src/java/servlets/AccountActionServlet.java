@@ -71,7 +71,7 @@ public class AccountActionServlet extends HttpServlet
                         double creditAmount = creditCard.getAvailableCreditAmount();
                         if (charge > creditAmount) {
                             errorMessage += "Amount entered exceeds the available credit amount of " +
-                                    creditAmount + ". Please enter a valid amount.";
+                                    currency.format(creditAmount) + ". Please enter a valid amount.";
                         }
                         String description = request.getParameter("cDesc");
                         creditCard.setCharge(charge, description);
