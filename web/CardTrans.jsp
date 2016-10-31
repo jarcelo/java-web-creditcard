@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label" for="">Account ID</label>
                     <div class="col-sm-3">
-                         <input class="form-control" type="text" name="account" id="account" 
+                         <input class="form-control text-center" type="text" name="account" id="account" 
                        value="${empty card.accountId ? cookie.acct.value : card.accountId}"/>
                     </div>
                     <input class="btn btn-success" type="submit" value="New Account" onclick="pageAction('new')">
@@ -53,14 +53,14 @@
                         <div class="input-group">
                             <div class="input-group-addon">$</div>
                             <input class="form-control" type="text" name="cAmt" id="cAmt">
-                            <div class="input-group-addon">.00</div>
                         </div>
                     </div>
                     <label class="col-sm-1 control-label" for="cDesc">Description</label>
                     <div class="col-sm-3">
                         <input class="form-control" type="text" name="cDesc" id="cDesc" size="40">
                     </div>
-                    <input class="btn btn-success" type="button" name="charge" id="charge" value="Post Charge" onclick="pageAction('charge')">
+                    <input class="btn btn-success" type="button" name="charge" id="charge" value="Post Charge" 
+                           onclick="pageAction('charge')">
                 </div>
                 
                 <div class="form-group">
@@ -69,10 +69,10 @@
                         <div class="input-group">
                             <div class="input-group-addon">$</div>
                             <input class="form-control" type="text" name="pAmt" id="pAmt">
-                            <div class="input-group-addon">.00</div>
                         </div>
                     </div>
-                    <input class="btn btn-success" type="button" name="payment" id="payment" value="Post Payment" onclick="pageAction('payment')">
+                    <input class="btn btn-success" type="button" name="payment" id="payment" value="Post Payment" 
+                           onclick="pageAction('payment')">
                 </div>
                     
                 <div class="form-group">
@@ -81,18 +81,19 @@
                         <div class="input-group">
                             <div class="input-group-addon">$</div>                           
                             <input class="form-control" type="text" name="cIncrease" id="cIncrease" size="15">
-                            <div class="input-group-addon">.00</div>                            
                         </div>
                     </div>
-                    <input class="btn btn-success" type="button" name="Increase" id="Increase" value="Credit Increase" onclick="pageAction('increase')">
+                    <input class="btn btn-success" type="button" name="Increase" id="Increase" value="Credit Increase" 
+                           onclick="pageAction('increase')">
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Interest Rate</label>
+                    <label class="col-sm-2 control-label">Interest Rate (APR)</label>
                     <div class="col-sm-3">
                         <input class="form-control" type="text" name="iRate" id="iRate">
                     </div>
-                    <input class="btn btn-success" type="button" name="interest" id="interest" value="Interest Charge" onclick="pageAction('interest')">
+                    <input class="btn btn-success" type="button" name="interest" id="interest" value="Interest Charge" 
+                           onclick="pageAction('interest')">
                 </div>
                 
                 <hr>
