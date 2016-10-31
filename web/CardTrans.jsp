@@ -88,9 +88,12 @@
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Interest Rate (APR)</label>
+                    <label class="col-sm-2 control-label">Interest Rate</label>
                     <div class="col-sm-3">
-                        <input class="form-control" type="text" name="iRate" id="iRate">
+                        <div class="input-group">
+                            <div class="input-group-addon">APR (in decimal)</div>                           
+                            <input class="form-control" type="text" name="iRate" id="iRate">
+                        </div>
                     </div>
                     <input class="btn btn-success" type="button" name="interest" id="interest" value="Interest Charge" 
                            onclick="pageAction('interest')">
