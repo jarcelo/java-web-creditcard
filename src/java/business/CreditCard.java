@@ -130,8 +130,8 @@ public class CreditCard {
         cerrmsg = "";
         cmsg = "";
 
-        cmsg = ("Interest Charge of " + f.format((cbal * (r / 12))) +
-                "\n applied for " + (r * 100) + "% APR.");
+        cmsg = ("Interest charge of " + f.format((cbal * (r / 12))) +
+                " applied for " + (r * 100) + "% APR.");
         cbal += cbal * (r / 12);
         cerrmsg = writeStatus();
         if (cerrmsg.isEmpty()) {
